@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { F1dataService } from './services/f1data.service';
+import { F1dataService } from '../services/f1data.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent {
-  title = 'DreamRacingTravels';
+export class HomeComponent {
 
+  // Array de objetos para carreras
   carreras:Array<any> = [];
 
   constructor(private f1dataService : F1dataService){
@@ -16,47 +16,55 @@ export class AppComponent {
     this.f1dataService.getCurrentSeason(1).subscribe((resp:any) => {
 
       var resultado = JSON.parse(resp);
+
       const fecha = new Date();
-      const anio = fecha.getFullYear();
+
       const mes = fecha.getMonth() + 1;
-      const dia = fecha.getDay();
+
+      // const mes = 5;
 
       var anioCarrera = 0;
+
       var mesCarrera = 0;
+
       var diaCarrera = 0;
+
       var aux = 0;
-      var proxima = 12;
+
+      var proxima = 0;
+
       var indiceCarrera = 0;
 
-      for (var i = 0; i < resultado.MRData.RaceTable.Races.length; i++) {
+      // Se recorre todo el json y se almacena la información
+      for (var i = 0; i < resultado.MRData.RaceTable.Races.length; i++){
 
-        console.log("La fecha de la carrera es: "+ resultado.MRData.RaceTable.Races[0].date);
         var fechaCarrera = new Date(resultado.MRData.RaceTable.Races[i].date).toISOString();
+
         anioCarrera = parseInt(fechaCarrera[0] + fechaCarrera[1] + fechaCarrera[2] + fechaCarrera[3]);
         mesCarrera = parseInt(fechaCarrera[5] + fechaCarrera[6]);
         diaCarrera = parseInt(fechaCarrera[8] + fechaCarrera[9]);
 
-        if(mesCarrera >= mes && mesCarrera <= 12 ){
+        if(mesCarrera >= mes){
           aux = mesCarrera;
+          //console.log(mes);
+          //console.log(mesCarrera);
           if (proxima < aux){
             proxima = aux;
             indiceCarrera = i;
+            //console.log(indiceCarrera);
           }
         }
-        
+
       }
-      
-    })
 
-    /*const fecha = new Date();
-    const anio = fecha.getFullYear() + 1;
+      //console.log(indiceCarrera);
+      //console.log(resultado.MRData.RaceTable.Races.length - indiceCarrera);
 
-    this.f1dataService.getOtherSeason(anio).subscribe((resp:any) => {
+    if(resultado.MRData.RaceTable.Races.length - indiceCarrera != resultado.MRData.RaceTable.Races.length){
 
-      var resultado = JSON.parse(resp);
+      for (var i = indiceCarrera; i< resultado.MRData.RaceTable.Races.length; i++){
 
-      for (var i = 0; i < resultado.MRData.RaceTable.Races.length; i++) {
-
+        // Se almacenan los datos en el Array
         this.carreras.push({
           season: resultado.MRData.RaceTable.Races[i].season,
           nombre: resultado.MRData.RaceTable.Races[i].raceName,
@@ -68,12 +76,25 @@ export class AppComponent {
           hora: resultado.MRData.RaceTable.Races[i].time
         })
 
-        console.log(this.carreras[i]);
-        
       }
 
-      
-    })*/
+    }else{
+
+      this.carreras.push({
+        season: "",
+        nombre: "No hay carreras próximas esta temporada",
+        pais: "",
+        estado: "",
+        circuito: "Puedes consultar otras temporadas o carreras más específicas en la sección Search",
+        info_circuito: "",
+        fecha: "",
+        hora: ""
+      })
+
+    }
+
+    })
 
   }
+
 }

@@ -1,0 +1,8 @@
+{
+    "/api/f1/*":{
+        "target":"http://ergast.com",
+        "secure":false,
+        "logLevel":"debug",
+        "changeOrigin" : true
+    }
+}

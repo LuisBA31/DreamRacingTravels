@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div id="contact" class="form-1">
+    <h1 class="h2-heading">Temporada Actual</h1>
+    <div class="container">
+        <h3 class="h2-heading">Temporada {{ carreras[0].season }}</h3>
+        <br><br>
+        <div class="table-responsive" align="center">
+            <table class="table-dark">
+              <thead>
+                <tr align="center">
+                  <th scope="col">Nombre de la carrera</th>
+                  <th scope="col">País</th>
+                  <th scope="col">Localidad</th>
+                  <th scope="col">Nombre del circuito</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Hora</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of carreras; let indice=index">
+                <tr>
+                    <td><p class="form-control-input"> {{ carreras[indice].nombre }} </p></td>
+                    <td><p class="form-control-input"> {{ carreras[indice].pais }} </p></td>
+                    <td><p class="form-control-input"> {{ carreras[indice].estado }} </p></td>
+                    <td><p class="form-control-input"> {{ carreras[indice].circuito }} </p></td>
+                    <td><p class="form-control-input"> {{ carreras[indice].fecha }}  &nbsp; &nbsp; &nbsp; </p></td>
+                    <td><p class="form-control-input"> {{ carreras[indice].hora }} &nbsp; &nbsp; &nbsp; </p></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

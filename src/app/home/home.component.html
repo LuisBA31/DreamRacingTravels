@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div id="services" class="basic-2" align="center">
+    <h1>Carreras<br>Próximas</h1>
+</div>
+<div id="services" class="basic-1"  *ngFor="let item of carreras; let indice=index">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h1>{{ carreras[indice].nombre | uppercase}}</h1>
+                <hr>
+                <h5>{{ carreras[indice].pais }}</h5>
+                <hr>
+                <h5>{{ carreras[indice].estado }}</h5>
+            </div>
+            <div class="col-lg-5">
+                <div class="text-container">
+                    <p>{{ carreras[indice].circuito }}</p>
+                    <h5>{{ carreras[indice].fecha }} - {{ carreras[indice].hora }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
