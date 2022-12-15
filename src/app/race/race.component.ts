@@ -60,15 +60,19 @@ export class RaceComponent{
      
         var iataString = "";
         
-        for(var j = 0; j < resultado.results.locations[0].iata.length ;j++){
-          if(j == 0){
-            iataString += resultado.results.locations[0].iata[j];
-          }else{
-              iataString += "," + resultado.results.locations[0].iata[j];
+        if(pais == this.paisCarrera){
+          for(var j = 0; j < resultado.results.locations[0].iata.length ;j++){
+            if(j == 0){
+              iataString += resultado.results.locations[0].iata[j];
+            }else{
+                iataString += "," + resultado.results.locations[0].iata[j];
+            }
           }
         }
+
         
-        if(pais = this.paisCarrera){
+        
+        if(pais == this.paisCarrera){
 
           //Aqui validamos que el hotel se encuentre en el mismo pais que el que se manda como parametro.
           this.hoteles.push({
@@ -84,6 +88,10 @@ export class RaceComponent{
 
       }
       
+      for (var i=0; i<this.hoteles.length; i++){
+        console.log(this.hoteles[i]);
+       }
+
     })
 
     function obtenerPais(cadenaADividir:String): String {
@@ -91,9 +99,7 @@ export class RaceComponent{
       return arrayDeCadenas[1].trim();
    }
 
-   for (var i=0; i<this.hoteles.length; i++){
-    console.log(this.hoteles[i]);
-   }
+   
     
   }
 }
