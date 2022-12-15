@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div id="services" class="basic-2" align="center">
-    <h1>Consulta<br>De<br>Carrera</h1>
+    <h1>Hoteles<br>Disponibles</h1>
 </div>
 <div id="services" class="basic-1" align="center">
     <br><br><br><br><br>
@@ -26,25 +26,24 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7">
-                <h3>Carrera</h3>
-                <h1>{{ hoteles[0].nombre | uppercase}}</h1>
-                <hr>
-                <h5>{{ hoteles[0].idpais }} - {{ hoteles[0].nombre }}</h5>
-            </div>
-            <div class="col-lg-5">
-                <div class="text-container">
-                    <h3>Circuito</h3>
-                    <p>{{ hoteles[0].hoteles }}</p>
+    <div id="services" class="basic-3"  *ngFor="let item of hoteles; let indice=index" align="center">
+        <hr style="border-color: white;" width="90%">
+        <br><br><br><br><br>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h3>Hotel</h3>
+                    <h1>{{ hoteles[indice].nombre | uppercase}}</h1>
+                    <hr>
+                    <h5>{{ hoteles[indice].localizacion }} - {{ hoteles[indice].idpais }}</h5>
+                    <h5>Valoraciones: {{ hoteles[indice].criticas }}</h5>
                 </div>
-            </div>
-            <div>
-                <br><br><br>
-                <h5></h5>
-                <h5></h5>
-                <br><br><br>
+                <div>
+                    <br><br><br>
+                    <h5>Total de hoteles en la zona: {{ hoteles[indice].hoteles }}</h5>
+                    <h5>{{ hoteles[indice].iatas }}</h5>
+                    <br><br><br>
+                </div>
             </div>
         </div>
     </div>

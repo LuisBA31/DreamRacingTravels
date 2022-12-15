@@ -305,3 +305,9 @@ a:hover {
 	padding-top: 5rem;
 	padding-bottom: 5rem;
 }
+
+.basic-3 {
+    background-color: rgb(46, 40, 70);
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
