@@ -24,7 +24,7 @@ export class HomeComponent {
 
       // const mes = fecha.getMonth() + 1;
 
-      const mes = 5;
+      const mes = 8;
 
       var anioCarrera = 0;
 
@@ -67,38 +67,40 @@ export class HomeComponent {
       // console.log(resultado.MRData.RaceTable.Races.length - indiceCarrera);
       indiceTemporada = resultado.MRData.RaceTable.Races.length - indiceCarrera;
 
-    if(indiceTemporada != resultado.MRData.RaceTable.Races.length){
+      if(indiceTemporada != resultado.MRData.RaceTable.Races.length){
 
-      for (var i = indiceCarrera; i< resultado.MRData.RaceTable.Races.length; i++){
+        for (var i = indiceCarrera; i< resultado.MRData.RaceTable.Races.length; i++){
 
-        // Se almacenan los datos en el Array
+          // Se almacenan los datos en el Array
+          this.carreras.push({
+            posicion: i,
+            season: resultado.MRData.RaceTable.Races[i].season,
+            nombre: resultado.MRData.RaceTable.Races[i].raceName,
+            pais: resultado.MRData.RaceTable.Races[i].Circuit.Location.country,
+            estado: resultado.MRData.RaceTable.Races[i].Circuit.Location.locality,
+            circuito: resultado.MRData.RaceTable.Races[i].Circuit.circuitName,
+            info_circuito: resultado.MRData.RaceTable.Races[i].Circuit.url,
+            fecha: resultado.MRData.RaceTable.Races[i].date,
+            hora: resultado.MRData.RaceTable.Races[i].time
+          })
+
+        }
+
+      }else{
+
         this.carreras.push({
-          season: resultado.MRData.RaceTable.Races[i].season,
-          nombre: resultado.MRData.RaceTable.Races[i].raceName,
-          pais: resultado.MRData.RaceTable.Races[i].Circuit.Location.country,
-          estado: resultado.MRData.RaceTable.Races[i].Circuit.Location.locality,
-          circuito: resultado.MRData.RaceTable.Races[i].Circuit.circuitName,
-          info_circuito: resultado.MRData.RaceTable.Races[i].Circuit.url,
-          fecha: resultado.MRData.RaceTable.Races[i].date,
-          hora: resultado.MRData.RaceTable.Races[i].time
+          posicion: 0,
+          season: "",
+          nombre: "No hay carreras próximas esta temporada",
+          pais: "",
+          estado: "",
+          circuito: "Puedes consultar otras temporadas o carreras más específicas en la sección Search",
+          info_circuito: "",
+          fecha: "",
+          hora: ""
         })
 
       }
-
-    }else{
-
-      this.carreras.push({
-        season: "",
-        nombre: "No hay carreras próximas esta temporada",
-        pais: "",
-        estado: "",
-        circuito: "Puedes consultar otras temporadas o carreras más específicas en la sección Search",
-        info_circuito: "",
-        fecha: "",
-        hora: ""
-      })
-
-    }
 
     })
 

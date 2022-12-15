@@ -4,5 +4,11 @@
         "secure":false,
         "logLevel":"debug",
         "changeOrigin" : true
+    },
+    "/api/v2/*":{
+        "target":"http://engine.hotellook.com",
+        "secure":false,
+        "logLevel":"debug",
+        "changeOrigin" : true
     }
 }

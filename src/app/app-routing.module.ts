@@ -6,6 +6,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { CurrentComponent } from './current/current.component';
 import { SearchComponent } from './search/search.component';
+import { RaceComponent } from './race/race.component';
 
 const routes: Routes = [
   {path: 'navbar', component: NavbarComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'footer', component: FooterComponent},
   {path: 'current', component: CurrentComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'race/:id/:nom/:pais/:loc/:fecha/:hora/:info/:carrera', component: RaceComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

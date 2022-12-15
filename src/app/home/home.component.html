@@ -3,7 +3,7 @@
     <h1>Carreras<br>Próximas</h1>
 </div>
 <div id="services" class="basic-1" align="center">
-    <h1>Temporada<br>{{ temporada }}</h1>
+    <h2>Temporada<br>{{ temporada }}</h2>
 </div>
 <div id="services" class="basic-1"  *ngFor="let item of carreras; let indice=index" align="center">
     <hr style="border-color: white;" width="90%">
@@ -19,13 +19,15 @@
             <div class="col-lg-5">
                 <div class="text-container">
                     <h3>Circuito</h3>
-                    <p><a href="{{ carreras[indice].info_circuito }}">{{ carreras[indice].circuito }}</a></p>
+                    <p><a href="{{ carreras[indice].info_circuito }}" target="_blank">{{ carreras[indice].circuito }}</a></p>
                 </div>
             </div>
             <div>
                 <br><br><br>
                 <h5>{{ carreras[indice].fecha }}</h5>
                 <h5>{{ carreras[indice].hora }}</h5>
+                <br><br><br>
+                <a class="btn-solid-lg" [routerLink]="['/race', carreras[indice].posicion, carreras[indice].nombre, carreras[indice].pais, carreras[indice].estado, carreras[indice].fecha, carreras[indice].hora, carreras[indice].info_circuito, carreras[indice].circuito]">Consultar Carrera</a>
             </div>
         </div>
     </div>

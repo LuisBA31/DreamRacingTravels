@@ -1,0 +1,32 @@
+<div id="services" class="basic-2" align="center">
+    <h1>Consulta<br>De<br>Carrera</h1>
+</div>
+<div id="services" class="basic-1" align="center">
+    <h2>Temporada<br>{{ temporada }}</h2>
+</div>
+<div id="services" class="basic-1" align="center">
+    <hr style="border-color: white;" width="90%">
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h3>Carrera</h3>
+                <h1>{{ hoteles[0].nombre | uppercase}}</h1>
+                <hr>
+                <h5>{{ hoteles[0].idpais }} - {{ hoteles[0].nombre }}</h5>
+            </div>
+            <div class="col-lg-5">
+                <div class="text-container">
+                    <h3>Circuito</h3>
+                    <p>{{ hoteles[0].hoteles }}</p>
+                </div>
+            </div>
+            <div>
+                <br><br><br>
+                <h5>{{ carrera[0].iatas }}</h5>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
