@@ -91,13 +91,15 @@ h6 {
 }
 
 a {
-	color: #53575a;
-	text-decoration: underline;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 1.5rem;
 }
 
 a:hover {
-	color: #53575a;
-	text-decoration: underline;
+	color: #ffffff;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 .no-line {
@@ -298,7 +300,7 @@ a:hover {
 }
 
 .basic-2 {
-    background-color: rgb(37, 32, 56);
+    background-color: #161223;
 	padding-top: 5rem;
 	padding-bottom: 5rem;
 }

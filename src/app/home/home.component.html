@@ -2,21 +2,30 @@
 <div id="services" class="basic-2" align="center">
     <h1>Carreras<br>Próximas</h1>
 </div>
-<div id="services" class="basic-1"  *ngFor="let item of carreras; let indice=index">
+<div id="services" class="basic-1" align="center">
+    <h1>Temporada<br>{{ temporada }}</h1>
+</div>
+<div id="services" class="basic-1"  *ngFor="let item of carreras; let indice=index" align="center">
+    <hr style="border-color: white;" width="90%">
+    <br><br><br><br><br>
     <div class="container">
         <div class="row">
             <div class="col-lg-7">
+                <h3>Carrera</h3>
                 <h1>{{ carreras[indice].nombre | uppercase}}</h1>
                 <hr>
-                <h5>{{ carreras[indice].pais }}</h5>
-                <hr>
-                <h5>{{ carreras[indice].estado }}</h5>
+                <h5>{{ carreras[indice].estado }} - {{ carreras[indice].pais }}</h5>
             </div>
             <div class="col-lg-5">
                 <div class="text-container">
-                    <p>{{ carreras[indice].circuito }}</p>
-                    <h5>{{ carreras[indice].fecha }} - {{ carreras[indice].hora }}</h5>
+                    <h3>Circuito</h3>
+                    <p><a href="{{ carreras[indice].info_circuito }}">{{ carreras[indice].circuito }}</a></p>
                 </div>
+            </div>
+            <div>
+                <br><br><br>
+                <h5>{{ carreras[indice].fecha }}</h5>
+                <h5>{{ carreras[indice].hora }}</h5>
             </div>
         </div>
     </div>

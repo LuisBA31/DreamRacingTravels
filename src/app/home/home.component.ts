@@ -11,6 +11,9 @@ export class HomeComponent {
   // Array de objetos para carreras
   carreras:Array<any> = [];
 
+  // Temporada actual
+  temporada = "[Error en la fecha del sistema]";
+
   constructor(private f1dataService : F1dataService){
 
     this.f1dataService.getCurrentSeason(1).subscribe((resp:any) => {
@@ -19,9 +22,9 @@ export class HomeComponent {
 
       const fecha = new Date();
 
-      const mes = fecha.getMonth() + 1;
+      // const mes = fecha.getMonth() + 1;
 
-      // const mes = 5;
+      const mes = 5;
 
       var anioCarrera = 0;
 
@@ -29,11 +32,15 @@ export class HomeComponent {
 
       var diaCarrera = 0;
 
-      var aux = 0;
+      var band = false;
 
       var proxima = 0;
 
+      this.temporada = resultado.MRData.RaceTable.Races[0].season;
+
       var indiceCarrera = 0;
+
+      var indiceTemporada = 0;
 
       // Se recorre todo el json y se almacena la información
       for (var i = 0; i < resultado.MRData.RaceTable.Races.length; i++){
@@ -44,23 +51,23 @@ export class HomeComponent {
         mesCarrera = parseInt(fechaCarrera[5] + fechaCarrera[6]);
         diaCarrera = parseInt(fechaCarrera[8] + fechaCarrera[9]);
 
-        if(mesCarrera >= mes){
-          aux = mesCarrera;
-          //console.log(mes);
-          //console.log(mesCarrera);
-          if (proxima < aux){
-            proxima = aux;
+        if(mesCarrera == mes){
+          // console.log(mes);
+          // console.log(mesCarrera);
+          if (!band){
             indiceCarrera = i;
-            //console.log(indiceCarrera);
+            console.log(indiceCarrera);
+            band = true;
           }
         }
 
       }
 
-      //console.log(indiceCarrera);
-      //console.log(resultado.MRData.RaceTable.Races.length - indiceCarrera);
+      // console.log(indiceCarrera);
+      // console.log(resultado.MRData.RaceTable.Races.length - indiceCarrera);
+      indiceTemporada = resultado.MRData.RaceTable.Races.length - indiceCarrera;
 
-    if(resultado.MRData.RaceTable.Races.length - indiceCarrera != resultado.MRData.RaceTable.Races.length){
+    if(indiceTemporada != resultado.MRData.RaceTable.Races.length){
 
       for (var i = indiceCarrera; i< resultado.MRData.RaceTable.Races.length; i++){
 

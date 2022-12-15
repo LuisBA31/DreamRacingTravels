@@ -325,3 +325,13 @@ a:hover {
 .form-1 .form-control-textarea::placeholder {
 	color: #efefef;
 }
+
+.basic-2 {
+    background-color: #161223;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+.basic-2 h1 {
+    color: #ffffff;
+}
