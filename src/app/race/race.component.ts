@@ -29,8 +29,8 @@ export class RaceComponent{
     // Se obtiene el parámetro del id de la carrera
 
     this.nombreCarrera = this._route.snapshot.paramMap.get('nom');
-    this.estadoCarrera = this._route.snapshot.paramMap.get('pais');
-    this.paisCarrera = this._route.snapshot.paramMap.get('loc');
+    this.estadoCarrera = this._route.snapshot.paramMap.get('loc');
+    this.paisCarrera = this._route.snapshot.paramMap.get('pais');
     this.circuitoCarrera = this._route.snapshot.paramMap.get('carrera');
     this.infoCircuito = this._route.snapshot.paramMap.get('info');
     this.fechaCarrera = this._route.snapshot.paramMap.get('fecha');
@@ -39,11 +39,17 @@ export class RaceComponent{
     console.log(this.nombreCarrera);
 
     // Obteniendo datos de los hoteles
-    this.hotelService.getHotelesPais("France").subscribe((resp:any) => {
+    this.hotelService.getHotelesPais(this.paisCarrera).subscribe((resp:any) => {
+
+      // Se vacía el array
+
+      while(this.hoteles.length > 0){
+        this.hoteles.pop();
+      }
 
       var resultado = JSON.parse(resp);
       
-      console.log("El pais es: " + this.pais);
+      console.log("El pais es: " + this.paisCarrera);
       
       console.log(resultado);
 
@@ -54,15 +60,15 @@ export class RaceComponent{
      
         var iataString = "";
         
-        for(var i = 0; i < resultado.results.locations[0].iata.length ;i++){
-          if(i == 0){
-            iataString += resultado.results.locations[0].iata[i];
+        for(var j = 0; j < resultado.results.locations[0].iata.length ;j++){
+          if(j == 0){
+            iataString += resultado.results.locations[0].iata[j];
           }else{
-              iataString += "," + resultado.results.locations[0].iata[i]; 
+              iataString += "," + resultado.results.locations[0].iata[j];
           }
         }
         
-        if(pais = this.pais){
+        if(pais = this.paisCarrera){
 
           //Aqui validamos que el hotel se encuentre en el mismo pais que el que se manda como parametro.
           this.hoteles.push({
@@ -85,6 +91,9 @@ export class RaceComponent{
       return arrayDeCadenas[1].trim();
    }
 
+   for (var i=0; i<this.hoteles.length; i++){
+    console.log(this.hoteles[i]);
+   }
+    
   }
-
 }
